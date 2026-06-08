@@ -1,0 +1,63 @@
+﻿@charset "utf-8";
+
+/* 共通のデザイン */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/note.png);
+  background-repeat: repeat-x repeat-y;
+  color: #121d32;
+  font-family:
+    "AB-くりっぷM", "メイリオ", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 1.2em;
+  line-height: 2em;
+}
+p {
+  margin: 0 0 20px 0;
+}
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+#contents {
+  width: 800px;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+}
+#main {
+  width: 570px;
+  margin-bottom: 30px;
+  float: auto;
+}
+#sub {
+  width: 200px;
+  float: initial;
+}
+#sub img {
+  display: block;
+}
+#sub ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#sub ul li {
+  margin-bottom: 20px;
+}
+#graphic {
+  margin-bottom: 0;
+}
+#main h2 {
+  margin-bottom: 10px;
+  padding: 4px 0 0 0;
+  background-image: url;
+  background-repeat: no-repeat;
+  background-position: 0 4px;
+  font-size: 1.8em;
+}
+caption {
+  overflow: hidden;
+}

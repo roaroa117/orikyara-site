@@ -1,0 +1,57 @@
+﻿@charset "utf-8";
+
+/* 基本レイアウト ここから↓ */
+@import url(common.css);
+header {
+  width: auto;
+  height: 70px;
+  margin: 20px auto 40px auto;
+  position: relative;
+}
+header a:hover {
+  opacity: 0.6;
+}
+header h1 {
+  margin: 0;
+  position: absolute;
+}
+nav {
+  position: absolute;
+  right: 100px;
+}
+nav ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+nav ul li {
+  float: left;
+}
+
+/* ボタンの上にマウスカーソルが重なったら・・・ */
+nav ul li a:hover {
+  opacity: 0.6;
+}
+
+footer p {
+}
+
+footer small {
+  font-size: 50%;
+}
+
+#main h1 {
+}
+
+.float_clear {
+  clear: both;
+}
+/* 基本レイアウト ここまで↑ */
+
+/* 「おすすめスイーツ」ページ ここから↓ */
+/* 「おすすめスイーツ」ページ ここまで↑ */
+
+/* 「店舗のご案内」ページ ここから↓ */
+/* 「店舗のご案内」ページ ここまで↑ */
+
+/* 「ご感想・ご提案」ページ ここから↓ */
+/* 「ご感想・ご提案」ページ ここまで↑ */
