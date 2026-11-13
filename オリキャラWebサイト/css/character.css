@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/* 1. 全体を横並びにする設定 */
+.card-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* 2. リンク全体の箱（画像と文字をセットにする透明な枠） */
+.char-card-wrap {
+  width: calc(
+    50% - 15px
+  ); /* 【変更】2列になったとき、隙間（gap:30px）を引いた半分に収まる計算 */
+  max-width: 250px; /* 【変更】画面が広いときは最大250pxでストップ */
+  text-decoration: none;
+  display: block;
+}
+
+/* 3. 1人目の「四角い枠」（サイズと角丸を完全に固定） */
+.char-card-wrap:nth-child(1) .img-box {
+  width: 100%;
+  background-color: #913b3b; /* 1人目の背景（赤） */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* ★中身がはみ出さないようにする設定 */
+}
+
+/* 4. 2人目の「四角い枠」（サイズと角丸を完全に固定） */
+.char-card-wrap:nth-child(2) .img-box {
+  width: 100%;
+  background-color: #43199d; /* 2人目の背景 */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* ★中身がはみ出さないようにする設定 */
+}
+/*3人目*/
+.char-card-wrap:nth-child(3) .img-box {
+  width: 100%;
+  background-color: #ecf404; /* 背景 */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* ★中身がはみ出さないようにする設定 */
+}
+/*4人目*/
+.char-card-wrap:nth-child(4) .img-box {
+  width: 100%;
+  background-color: #00872bda; /* 背景 */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* ★中身がはみ出さないようにする設定 */
+}
+/*5人目*/
+.char-card-wrap:nth-child(5) .img-box {
+  width: 100%;
+  background-color: #ee6ac9; /* 背景 */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* ★中身がはみ出さないようにする設定 */
+}
+/* 5. カーソルを合わせたとき（hover）の動き */
+/* 枠はそのままで、中の画像（.icon）だけを1.1倍に拡大する */
+.char-card-wrap:hover .icon {
+  transform: scale(1.1);
+}
+
+/* 6. 画像自体の設定（元の比率のまま・変な切り抜きなし） */
+.char-card-wrap .icon {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease; /* 0.3秒かけてフワッと動かす */
+}
+
+/* 7. ★CHARACTERのドットフォントの設定（枠の外・最初の設定を100%復元） */
+.char-name {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 23px;
+  font-weight: bold;
+  color: #121d32; /* 最初の濃いネイビー */
+  text-align: auto; /* 最初の設定通り */
+  margin: auto; /* 最初の設定通り */
+  text-align: center; /*一応真ん中にしてみた*/
+}

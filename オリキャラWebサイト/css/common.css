@@ -1,0 +1,202 @@
+﻿@charset "utf-8";
+
+/* 共通のデザイン */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/note.png);
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: overlay;
+  background-repeat: repeat-x repeat-y;
+  color: #121d32;
+  font-family:
+    "AB-くりっぷM", "メイリオ", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 1.2em;
+  line-height: 2em;
+}
+p {
+  margin: 0 0 20px 0;
+}
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+#icon {
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+}
+
+#contents {
+  max-width: 100%; /* サイトが広がりすぎないように最大幅を制限 */
+  margin: 0; /* 画面の真ん中に寄せる */
+  padding: 0; /* ★左右に （余白）を作る */
+}
+#main {
+  width: 100%;
+  padding: 0 80px; /* #contents側で余白を作ったので、ここは0でOK */
+  margin-bottom: 30px;
+  box-sizing: border-box; /* 余白を含めて100%の幅にするお守り */
+}
+/* 文字を左詰めに（真ん中寄せをやめる） */
+#main section {
+  text-align: left; /* ★文字は左寄せにします */
+}
+#sub {
+  width: 200px;
+  float: initial;
+}
+#sub img {
+  display: block;
+}
+#sub ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#sub ul a:hover {
+  opacity: 0.8;
+}
+#sub ul li {
+  margin-bottom: 20px;
+}
+#graphic {
+  text-align: center;
+}
+#main h2 {
+  margin-bottom: 10px;
+  padding: 4px 0 0 0;
+  background-image: url;
+  background-repeat: no-repeat;
+  background-position: 0 4px;
+  font-size: 1.8em;
+}
+caption {
+  overflow: hidden;
+}
+
+footer {
+  /* ★ここでフッターの背景色 */
+  background-color: #c5ccdb;
+  /* フッターの中の隙間（上下に20px、左右に0px） */
+  padding: 20px 0;
+
+  /* 中の文字を真ん中寄せにする */
+  text-align: center;
+  /* フッターを画面の横幅いっぱいに広げる */
+  width: 100%;
+}
+
+/*kokokaraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!!!!!!!!!!!!!*/
+
+/* ローディング全体の背景 */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #121d32; /* 背景色 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 一番手前に来るようにする */
+  transition: opacity 0.5s ease; /* 消えるときのふわっとした効果 */
+}
+/* 文字とバーを入れる幅300pxの箱 */
+.loading-box {
+  text-align: center;
+  width: 250px; /* 横棒の全体の長さ */
+}
+
+/* 横棒の土台（外枠） */
+.progress-bar {
+  width: 100%;
+  height: 30px; /* 横棒の太さ */
+  background-color: #121d32; /* 枠の内側の暗い色 */
+  border: 2px solid #acc7d0; /* 水色の枠線 */
+  padding: 2px; /* 枠線と中のゲージの間の隙間 */
+  box-sizing: border-box;
+}
+
+/* 中で伸びるゲージ（JavaScript連動用） */
+#real-gauge {
+  height: 100%;
+  background-color: #acc7d0; /* ゲージの明るい水色 */
+  width: 0%; /* 最初は0% */
+  transition: width 0.1s linear; /* なめらかに進むようにする */
+}
+
+/* 読み込みが終わったらJavaScriptでこのクラスをつけて消す */
+.loaded {
+  opacity: 0;
+  pointer-events: none; /* クリックをスルーさせる */
+}
+/* ローディング全体の並び順を「縦並び」にする */
+#loading {
+  flex-direction: column; /* これを足すと、縦に並びます */
+}
+/*サムネをスクロールできるようにするやつ*/
+/*サムネをスクロールできるようにするやつ*/
+/* サムネをスクロールできるようにするやつ */
+.slider {
+  position: relative;
+  width: 100%;
+  margin: 0 0 40px 0; /* 下に40pxの隙間をあける */
+
+  /* 👇ココが重要！スライダーの高さをここで決めます。
+     画像の縦横比に合わせて調整してください（例: 横16対縦9の割合） */
+  aspect-ratio: 16 / 9;
+}
+
+/* 画像を重ねる */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* 高さをスライダーの枠いっぱいに */
+  object-fit: cover; /* 画像が引き伸ばされないように綺麗に収める */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* ドット */
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #ccc;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #121d32;
+}
+
+/* スマホ対応 */
+@media screen and (max-width: 768px) {
+  .slider {
+    width: 95%;
+  }
+}

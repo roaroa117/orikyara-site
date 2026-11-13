@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+
+/* 基本レイアウト ここから↓ */
+@import url(common.css);
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 20px auto 40px auto;
+  padding: 0 30px;
+}
+header a:hover {
+  opacity: 0.8;
+}
+header h1 {
+  margin: 0;
+}
+nav {
+  position: static;
+}
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ボタンの上にマウスカーソルが重なったら・・・ */
+nav ul li a:hover {
+  opacity: 0.8;
+}
+
+footer p {
+  justify-content: center; /* 真ん中に寄せる */
+  flex-wrap: wrap; /* 画面が狭くなったら自動で折り返す */
+  list-style: none;
+  padding: 0;
+}
+
+footer small {
+  font-size: 50%;
+}
+
+#main h1 {
+  font-size: 24px;
+}
+
+.float_clear {
+  clear: both;
+}
+/* リストの親（ul）に対して「中身を横並びにしてね」と命令する */
+footer ul {
+  display: inline-flex; /* 横並びにする魔法の合言葉 */
+  justify-content: center; /* リンクを中央に寄せる（左寄せなら不要） */
+  list-style: none; /* リストの「・」を消す */
+  padding: 0; /* 余計な隙間をリセット */
+  gap: 20px; /* リンクとリンクの間のスキマ（数値はお好みで） */
+}
