@@ -61,27 +61,6 @@ footer ul {
 
 /* スマホ表示の調整 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 @media screen and (max-width: 600px) {
-
-  header {
-    margin: 12px auto 24px;
-    padding: 0 12px;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  header h1 {
-    font-size: 20px;
-  }
-
-  nav ul {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  nav ul li a {
-    font-size: 14px;
-  }
-
   #main {
     width: 100%;
     max-width: 100%;
