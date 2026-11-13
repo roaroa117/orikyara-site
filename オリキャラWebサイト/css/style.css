@@ -109,3 +109,39 @@ footer ul {
     white-space: nowrap;
   }
 }
+
+
+@media screen and (max-width: 600px) {
+
+  footer {
+    padding: 30px 16px;
+    box-sizing: border-box;
+  }
+
+  footer ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 18px 12px;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  footer ul li {
+    text-align: center;
+  }
+
+  footer ul li a {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  footer small {
+    font-size: 11px;
+    display: block;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+}
