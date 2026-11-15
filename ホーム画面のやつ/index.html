@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>マイルーム</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="room-living outfit-casual">
+    <canvas id="particleCanvas"></canvas>
+    <div class="background-overlay"></div>
+
+    <div class="app-container">
+      <!-- 上部ヘッダー -->
+      <header class="top-bar">
+        <div class="user-info">
+          <span id="userRank" class="rank-badge">Lv.1</span>
+          <span class="user-name">パートナー</span>
+          <div class="exp-bar-container">
+            <div id="expBarFill" class="exp-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="stats-info">
+          <div class="stat-item">❤　<strong id="favVal">0</strong> 回</div>
+        </div>
+
+        <div class="header-controls">
+          <button
+            id="roomToggleBtn"
+            class="icon-btn room-toggle-btn"
+            title="クリックで部屋を切り替え"
+          >
+            ベッドルームへ
+          </button>
+          <button id="outfitBtn" class="icon-btn">着せ替え</button>
+          <button id="galleryBtn" class="icon-btn">メモリー</button>
+          <!-- audioタグから controls を外して隠す -->
+          <audio id="bgmAudio" loop>
+            <source src="ame.mp3" type="audio/mp3" />
+          </audio>
+
+          <!-- 自作の再生／停止ボタン -->
+          <button id="playToggleBtn" class="icon-btn">▶</button>
+          <div id="timeWidget" class="time-widget" title="クリックで全画面時計">
+            00:00
+          </div>
+        </div>
+      </header>
+
+      <!-- メインワークスペース -->
+      <div class="main-workspace">
+        <!-- キャラクターエリア -->
+        <section class="character-section">
+          <div class="character-container" id="characterContainer">
+            <img id="characterImg" src="otoko.png" alt="キャラクター" />
+            <div id="heartContainer" class="heart-container"></div>
+          </div>
+
+          <div class="speech-bubble">
+            <div class="character-tag">
+              <span class="char-name">パートナー</span>
+              <span id="locationBadge" class="location-badge">リビング</span>
+            </div>
+            <div id="dialogueText" class="dialogue-text">
+              おかえり～ 今日も一緒に作業頑張ろうね
+            </div>
+          </div>
+        </section>
+
+        <!-- メモ / TODOエリア -->
+        <aside class="memo-section">
+          <div class="memo-card">
+            <div class="memo-header">
+              <h2>ToDo</h2>
+            </div>
+            <div class="todo-form">
+              <input
+                type="text"
+                id="todoInput"
+                placeholder="新しいタスクを入力..."
+              />
+              <button id="addTodoBtn">✓</button>
+            </div>
+            <ul id="todoList" class="todo-list"></ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 全画面時計モード -->
+    <div id="clockOverlay" class="clock-mode-overlay hidden">
+      <div class="clock-overlay-dim"></div>
+      <div class="clock-mode-content">
+        <div id="clockBigTime" class="clock-big-time">00:00:00</div>
+        <div id="clockBigDate" class="clock-big-date">2026.09.21 MON</div>
+        <div class="clock-return-hint">Click anywhere to return</div>
+      </div>
+    </div>
+
+    <!-- ギャラリーモーダル -->
+    <div id="galleryModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>メモリーたち</h2>
+          <button id="closeGalleryBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="gallery-desc">レベルが上がれば思い出が解放されるよ</p>
+          <div id="galleryGrid" class="gallery-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 着せ替えモーダル -->
+    <div id="outfitModal" class="modal-overlay hidden">
+      <div class="modal-content outfit-modal-content">
+        <div class="modal-header">
+          <h2>着せ替え</h2>
+          <button id="closeOutfitBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="outfit-grid">
+            <div class="outfit-item" data-outfit="casual">
+              <img src="otoko.png" alt="男性" />
+              <span>男性</span>
+            </div>
+            <div class="outfit-item" data-outfit="roomwear">
+              <img src="onnna.png" alt="女の子" />
+              <span>女の子</span>
+            </div>
+            <div class="outfit-item" data-outfit="maid">
+              <img src="neko dotto.jpg" alt="いいいいいいい" />
+              <span>あああ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 画像プレビューモーダル -->
+    <div id="previewModal" class="modal-overlay hidden">
+      <div class="preview-content">
+        <button id="previewClose" class="close-btn preview-close">
+          &times;
+        </button>
+        <img id="previewImg" src="neko dotto.jpg" alt="Preview" />
+        <div id="previewCaption" class="preview-caption"></div>
+      </div>
+    </div>
+
+    <!-- レベルアップモーダル -->
+    <div id="lvlupModal" class="modal-overlay hidden">
+      <div class="lvlup-card">
+        <div class="lvlup-title">LEVEL UP!</div>
+        <div id="lvlupLevel" class="lvlup-sub">LEVEL 2</div>
+        <div class="lvlup-img-wrapper">
+          <img id="lvlupImg" src="neko dotto.jpg" alt="Level Up CG" />
+        </div>
+        <div id="lvlupMsg" class="lvlup-msg">
+          新しい思い出が解放されました！
+        </div>
+        <button id="closeLvlupBtn" class="lvlup-btn">✕</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
